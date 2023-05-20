@@ -5,6 +5,7 @@ import utilStyles from '../assets/styles/utils.module.css';
 import Link from 'next/link';
 import React from 'react';
 import PropTypes from 'prop-types';
+import Navbar from './Navbar';
 // import { PropTypes } from 'mobx-react/dist/propTypes';
 
 const name = 'MealMaster';
@@ -13,7 +14,7 @@ export const siteTitle = 'MealMaster';
 // eslint-disable-next-line react/prop-types
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <div className="container-fluid p-0">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -29,39 +30,7 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/assets/img/cw-logo.png"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt=""
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <Image
-                priority
-                src="/assets/img/cw-logo.png"
-                className={utilStyles.borderCircle}
-                height={108}
-                width={108}
-                alt=""
-              />
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                {name}
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
+      <Navbar />
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>

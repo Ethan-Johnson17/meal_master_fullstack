@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite"
 import React from "react"
 import { AppState } from "../AppState.js"
 import { AuthService } from "../services/AuthService.js"
-import Link from "next/link.js"
+import Link from "next/link"
 
 function Login() {
 

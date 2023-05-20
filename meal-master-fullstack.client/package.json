@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^2.6.0",
     "@bcwdev/auth0provider-client": "^0.0.13",
     "@mdi/font": "^7.1.96",
     "axios": "^1.2.6",

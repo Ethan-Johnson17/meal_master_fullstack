@@ -22,3 +22,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Generated files
+*index.*
+*webpack.*
+*.pack
+0.pack
+1.pack
+2.pack
+3.pack
+4.pack
+5.pack
+6.pack
+7.pack
+8.pack
+9.pack
+10.pack
