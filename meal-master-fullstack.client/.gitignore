@@ -38,3 +38,6 @@ dist-ssr
 8.pack
 9.pack
 10.pack
+
+# Next.js chunks
+/.next/static/chunks/

@@ -3,6 +3,7 @@
 @import "./_overrides.scss";
 @import "./_utilities.scss";
 @import "./loaders.scss";
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&family=Foldit:wght@300&display=swap');
 
 body{
   overscroll-behavior: none;
@@ -39,4 +40,13 @@ select {
 form:invalid button[type="submit"] {
   filter: grayscale(1);
   pointer-events: none;
+}
+
+h1 {
+  font-family: 'Foldit', cursive;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: 'Barlow Condensed', sans-serif;
 }
