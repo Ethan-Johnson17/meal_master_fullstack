@@ -1,7 +1,4 @@
-meal-master-fullstack.client/.next/cache/webpack/client-development/5.pack
-meal-master-fullstack.client/.next/trace
-meal-master-fullstack.client/.next/cache/webpack/client-development/9.pack
-meal-master-fullstack.client/.next/cache/webpack/client-development/8.pack
+meal-master-fullstack.client/.next/cache/
 *index.*
 *webpack.*
 *.pack
@@ -21,3 +18,6 @@ meal-master-fullstack.client/.next/cache/webpack/client-development/8.pack
 /.next/static/chunks/
 meal-master-fullstack.client/.next/cache/webpack/client-development/index.pack
 meal-master-fullstack.client/.next/trace
+meal-master-fullstack.client/.next/cache/webpack/client-development/1.pack
+meal-master-fullstack.client/.next/cache/webpack/client-development/4.pack
+meal-master-fullstack.client/.next/cache/webpack/server-development/7.pack
