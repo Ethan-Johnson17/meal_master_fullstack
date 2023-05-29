@@ -1,4 +1,4 @@
-namespace meal-master-fullstack.Repositories;
+namespace meal_master_fullstack.Repositories;
 
 public class AccountsRepository
 {

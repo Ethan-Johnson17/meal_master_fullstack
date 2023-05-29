@@ -1,4 +1,4 @@
-namespace meal-master-fullstack.Controllers;
+namespace meal_master_fullstack.Controllers;
 
 [ApiController]
 [Route("[controller]")]

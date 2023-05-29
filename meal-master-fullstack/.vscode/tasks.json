@@ -7,7 +7,7 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/meal-master-fullstack.csproj",
+        "${workspaceFolder}/meal_master_fullstack.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -19,7 +19,7 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/meal-master-fullstack.csproj",
+        "${workspaceFolder}/meal_master_fullstack.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -33,7 +33,7 @@
         "watch",
         "run",
         "--project",
-        "${workspaceFolder}/meal-master-fullstack.csproj"
+        "${workspaceFolder}/meal_master_fullstack.csproj"
       ],
       "problemMatcher": "$msCompile"
     }
