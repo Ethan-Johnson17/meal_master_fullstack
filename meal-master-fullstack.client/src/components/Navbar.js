@@ -1,6 +1,7 @@
 import React from "react";
 import Image from 'next/image';
 import Link from "next/link";
+import TestButton from "./TestButton.js";
 // import Login from "./Login.js";
 
 export default function Navbar() {
@@ -55,6 +56,7 @@ export default function Navbar() {
         </ul>
         {/* <Login /> */}
       </div >
+      <TestButton />
     </nav >
   )
 }
