@@ -1,4 +1,4 @@
-namespace meal-master-fullstack.Models;
+namespace meal_master_fullstack.Models;
 
 public class Account
 {

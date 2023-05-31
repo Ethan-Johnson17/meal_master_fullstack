@@ -39,5 +39,7 @@ dist-ssr
 9.pack
 10.pack
 
+meal-master-fullstack.client/.next/cache/
+
 # Next.js chunks
 /.next/static/chunks/

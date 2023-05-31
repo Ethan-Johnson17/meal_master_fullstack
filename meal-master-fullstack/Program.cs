@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace meal-master-fullstack;
+namespace meal_master_fullstack;
 
 public class Program
 {

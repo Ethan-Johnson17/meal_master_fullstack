@@ -1,4 +1,4 @@
-namespace meal-master-fullstack.Services;
+namespace meal_master_fullstack.Services;
 
 public class AccountService
 {

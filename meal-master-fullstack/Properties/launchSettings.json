@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "meal-master-fullstack": {
+    "meal_master_fullstack": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

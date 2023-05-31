@@ -1,0 +1,23 @@
+meal-master-fullstack.client/.next/cache/
+*index.*
+*webpack.*
+*.pack
+0.pack
+1.pack
+2.pack
+3.pack
+4.pack
+5.pack
+6.pack
+7.pack
+8.pack
+9.pack
+10.pack
+
+# Next.js chunks
+/.next/static/chunks/
+meal-master-fullstack.client/.next/cache/webpack/client-development/index.pack
+meal-master-fullstack.client/.next/trace
+meal-master-fullstack.client/.next/cache/webpack/client-development/1.pack
+meal-master-fullstack.client/.next/cache/webpack/client-development/4.pack
+meal-master-fullstack.client/.next/cache/webpack/server-development/7.pack
