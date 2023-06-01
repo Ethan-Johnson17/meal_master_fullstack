@@ -23,7 +23,7 @@ export const AuthService = initialize({
   }
 })
 
-AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async() => {
+AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async () => {
   api.defaults.headers.authorization = AuthService.bearer
   localStorage.setItem('user-token', JSON.stringify(AuthService.bearer))
   api.interceptors.request.use(refreshAuthToken)
