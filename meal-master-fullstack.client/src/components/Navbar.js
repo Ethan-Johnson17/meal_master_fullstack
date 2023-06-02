@@ -1,20 +1,22 @@
 import React from "react";
-// import Login from "./Login";
 import Image from 'next/image';
 import Link from "next/link";
+import Login from "./Login.js";
 
 export default function Navbar() {
+
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow px-3">
       <Link className="navbar-brand d-flex" href={''}>
         <div className="d-flex">
           <Image
-              priority
-              src="/Images/hamburger.svg"
-              className="logo-icon rounded"
-              height={40}
-              width={40}
-              alt=""
+            priority
+            src="/Images/hamburger.svg"
+            className="logo-icon rounded"
+            height={40}
+            width={40}
+            alt=""
           />
           <h1 className="text-danger ms-2 me-3 mb-0">MealMaster</h1>
         </div>
@@ -53,7 +55,7 @@ export default function Navbar() {
             </Link>
           </li>
         </ul>
-        {/* <Login /> */}
+        <Login />
       </div >
     </nav >
   )

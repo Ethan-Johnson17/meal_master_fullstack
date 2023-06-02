@@ -43,3 +43,5 @@ meal-master-fullstack.client/.next/cache/
 
 # Next.js chunks
 /.next/static/chunks/
+
+.env.local

@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Navbar from './Navbar';
 import Footer from './Footer';
+
 // import { PropTypes } from 'mobx-react/dist/propTypes';
 
 const name = 'MealMaster';
