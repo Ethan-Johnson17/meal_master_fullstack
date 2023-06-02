@@ -1,14 +1,24 @@
 import { observer } from "mobx-react-lite"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useUser } from '@auth0/nextjs-auth0/client'
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap"
 import Link from "next/link.js"
+import { AppState } from "../AppState.js"
+import { logger } from "../utils/Logger.js"
 
 function Login() {
   const [isOpen, setIsOpen] = useState(false)
   const { user, isLoading } = useUser()
   const toggle = () => setIsOpen(!isOpen)
-
+  function setAccount() {
+    if (user) {
+      AppState.account = user
+      // logger.log(AppState.account)
+    }
+  }
+  useEffect(() => {
+    setAccount()
+  })
 
   return (
     <div>

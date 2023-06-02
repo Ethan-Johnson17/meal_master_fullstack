@@ -4,6 +4,8 @@ import Link from "next/link";
 import Login from "./Login.js";
 
 export default function Navbar() {
+
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow px-3">
       <Link className="navbar-brand d-flex" href={''}>
