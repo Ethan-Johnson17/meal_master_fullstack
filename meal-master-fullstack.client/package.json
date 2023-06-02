@@ -19,6 +19,7 @@
     "next": "^13.4.4",
     "prop-types": "^15.8.1",
     "react-dom": "^18.2.0",
+    "reactstrap": "^9.1.10",
     "socket.io-client": "^4.5.4",
     "sweetalert2": "^11.7.1"
   },

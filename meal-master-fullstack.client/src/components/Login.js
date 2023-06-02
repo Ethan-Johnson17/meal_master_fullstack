@@ -1,52 +1,55 @@
 import { observer } from "mobx-react-lite"
-import React from "react"
-// import { AppState } from "../AppState.js"
-// import { AuthService } from "../services/AuthService.js"
-// import Link from "next/link"
+import React, { useState } from "react"
+import { useUser } from '@auth0/nextjs-auth0/client'
+import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap"
+import Link from "next/link.js"
 
 function Login() {
+  const [isOpen, setIsOpen] = useState(false)
+  const { user, isLoading } = useUser()
+  const toggle = () => setIsOpen(!isOpen)
 
-  // function login() {
-  //   AuthService.loginWithRedirect()
-  // }
-
-  // function logout() {
-  //   localStorage.removeItem('user-token')
-  //   AuthService.logout({})
-  // }
-
-  // const notAuthenticated = (
-  //   <button className="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" onClick={login}>Login</button>
-  // )
-
-  // const authenticated = (
-  //   <div className="my-2 my-lg-0">
-  //     <img src={AppState.account?.picture} alt="account photo" height="40" className="rounded selectable no-select" data-bs-toggle="dropdown"
-  //       aria-expanded="false" />
-
-  //     <div className="dropdown-menu dropdown-menu-lg-end dropdown-menu-start p-0" aria-labelledby="authDropdown">
-  //       <div className="list-group">
-  //         <Link href={'Account'}>
-  //           <div className="list-group-item dropdown-item list-group-item-action">
-  //             Manage Account
-  //           </div>
-  //         </Link>
-  //         <div className="list-group-item dropdown-item list-group-item-action text-danger selectable" onClick={logout}>
-  //           <i className="mdi mdi-logout"></i>
-  //           logout
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // )
 
   return (
     <div>
-      <span className="navbar-text">
-        {/* {!AppState.account?.id ? notAuthenticated : authenticated} */}
-        <a href="/api/auth/login">Login</a>
-        <a href="/api/auth/logout">Logout</a>
-      </span>
+      {!user && (
+        <>
+          <a href="/api/auth/login"
+            className="btn btn-primary btn-margin">
+            Log in</a>
+        </>
+      )}
+      {user && (
+        <>
+          <UncontrolledDropdown inNavbar>
+            <DropdownToggle nav caret >
+              <img
+                src={user.picture}
+                alt="Profile"
+                className="nav-user-profile rounded-circle"
+                width="50"
+                height="50"
+              />
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem header>
+                {user.name}
+              </DropdownItem>
+              <DropdownItem >
+                <Link href="/profile">
+                  Profile
+                </Link>
+              </DropdownItem>
+              <DropdownItem>
+                <a href="/api/auth/logout">
+                  Log out
+                </a>
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
+        </>
+      )}
+
     </div>
   )
 }
