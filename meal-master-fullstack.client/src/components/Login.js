@@ -7,13 +7,10 @@ import { AppState } from "../AppState.js"
 import { logger } from "../utils/Logger.js"
 
 function Login() {
-  const [isOpen, setIsOpen] = useState(false)
-  const { user, isLoading } = useUser()
-  const toggle = () => setIsOpen(!isOpen)
+  const { user } = useUser()
   function setAccount() {
     if (user) {
       AppState.account = user
-      // logger.log(AppState.account)
     }
   }
   useEffect(() => {

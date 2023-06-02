@@ -5,7 +5,6 @@ import { AppState } from '../AppState.js';
 
 
 export default function Profile() {
-    // const { user } = useUser();
     const account = AppState.account
 
     return (
