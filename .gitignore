@@ -16,8 +16,12 @@ meal-master-fullstack.client/.next/cache/
 
 # Next.js chunks
 /.next/static/chunks/
+/.next/
+*/.next/*
+*.next*
 meal-master-fullstack.client/.next/cache/webpack/client-development/index.pack
 meal-master-fullstack.client/.next/trace
 meal-master-fullstack.client/.next/cache/webpack/client-development/1.pack
 meal-master-fullstack.client/.next/cache/webpack/client-development/4.pack
 meal-master-fullstack.client/.next/cache/webpack/server-development/7.pack
+meal-master-fullstack.client/.next/static/webpack/pages/_app.d2c666de76ba19e3.hot-update.js
