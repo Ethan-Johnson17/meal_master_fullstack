@@ -18,6 +18,9 @@ meal-master-fullstack.client/.next/cache/
 /.next/static/chunks/
 meal-master-fullstack.client/.next/cache/webpack/client-development/index.pack
 meal-master-fullstack.client/.next/trace
+meal-master-fullstack.client/.next
+*.next.*
 meal-master-fullstack.client/.next/cache/webpack/client-development/1.pack
 meal-master-fullstack.client/.next/cache/webpack/client-development/4.pack
 meal-master-fullstack.client/.next/cache/webpack/server-development/7.pack
+meal-master-fullstack.client/.next/build-manifest.json
