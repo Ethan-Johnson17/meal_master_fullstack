@@ -14,10 +14,12 @@ CREATE TABLE
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
         title TEXT NOT NULL COMMENT 'Recipe Title',
-        subtitle TEXT NOT NULL COMMENT 'recipe Subtitle',
-        category TEXT NOT NULL,
+        subtitle TEXT COMMENT 'recipe Subtitle',
+        tags TEXT NOT NULL,
         cuisine TEXT NOT NULL,
         imgUrl TEXT,
         creatorId varchar(255),
         FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
+
+DROP TABLE recipes;
