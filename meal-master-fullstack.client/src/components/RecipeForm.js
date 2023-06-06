@@ -7,7 +7,7 @@ export default function MyForm() {
     recipeSubtitle: '',
     recipeImg: '',
     cuisine: '',
-    tags: []
+    tags: ''
   });
 
   const handleInputChange = (event) => {
@@ -21,6 +21,7 @@ export default function MyForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Perform form submission logic with recipeData
+    console.log(recipeData)
     recipesService.createRecipe(recipeData)
   };
 
