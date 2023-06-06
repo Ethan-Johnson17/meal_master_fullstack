@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow px-3">
-      <Link className="navbar-brand d-flex" href={''}>
+      <Link className="navbar-brand d-flex" href={'/'}>
         <div className="d-flex">
           <Image
             priority
@@ -40,12 +40,12 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href={'About'} className="btn text-danger selectable text-uppercase">
+            <Link href={'/About'} className="btn text-danger selectable text-uppercase">
               My Shopping List
             </Link>
           </li>
           <li>
-            <Link href={'About'} className="btn text-danger selectable text-uppercase">
+            <Link href={'/FindRecipes'} className="btn text-danger selectable text-uppercase">
               Find Recipes
             </Link>
           </li>

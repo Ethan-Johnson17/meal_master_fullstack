@@ -14,7 +14,7 @@ const name = 'MealMaster';
 export const siteTitle = 'MealMaster';
 
 // eslint-disable-next-line react/prop-types
-export default function Layout({ children, home }) {
+export default function Layout({ children }) {
   return (
     <div className="container-fluid p-0">
       <Head>
@@ -29,11 +29,6 @@ export default function Layout({ children, home }) {
       </Head>
       <Navbar />
       <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">← Back to home</Link>
-        </div>
-      )}
       <Footer />
     </div>
   )

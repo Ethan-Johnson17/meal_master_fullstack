@@ -13,7 +13,7 @@
     "@bcwdev/auth0provider-client": "^0.0.13",
     "@mdi/font": "^7.1.96",
     "axios": "^1.2.6",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.0.0",
     "mobx": "^6.7.0",
     "mobx-react": "^7.6.0",
     "next": "^13.4.4",
