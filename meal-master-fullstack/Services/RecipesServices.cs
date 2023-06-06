@@ -32,7 +32,7 @@ namespace meal_master_fullstack.Services
       Recipe oldRecipe = Get(updatedRecipe.Id);
       updatedRecipe.Title = updatedRecipe.Title != null ? updatedRecipe.Title : oldRecipe.Title;
       updatedRecipe.Subtitle = updatedRecipe.Subtitle != null ? updatedRecipe.Subtitle : oldRecipe.Subtitle;
-      updatedRecipe.Category = updatedRecipe.Category != null ? updatedRecipe.Category : oldRecipe.Category;
+      updatedRecipe.Tags = updatedRecipe.Tags != null ? updatedRecipe.Tags : oldRecipe.Tags;
       updatedRecipe.Cuisine = updatedRecipe.Cuisine != null ? updatedRecipe.Cuisine : oldRecipe.Cuisine;
       updatedRecipe.ImgUrl = updatedRecipe.ImgUrl != null ? updatedRecipe.ImgUrl : oldRecipe.ImgUrl;
       return _repo.Update(updatedRecipe);
