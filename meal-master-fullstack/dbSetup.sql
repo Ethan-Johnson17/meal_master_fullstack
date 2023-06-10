@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS ingredients(
   quantity VARCHAR(100) NOT NULL,
   recipeId INT NOT NULL
 
-  -- FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
+  FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 
 DROP TABLE ingredients;
