@@ -22,6 +22,7 @@ export default function MyForm() {
     event.preventDefault();
     // Perform form submission logic with recipeData
     console.log(recipeData)
+    recipeData.tags = recipeData.tags.toLowerCase();
     recipesService.createRecipe(recipeData)
   };
 
@@ -39,8 +40,8 @@ export default function MyForm() {
       <input type="text" name="recipeImg" className="form-control mb-4" value={recipeData.recipeImg}
           onChange={handleInputChange} />
       
-      <label htmlFor="recipeSubtitle">Tags (Ex. easy, seafood, spicy)</label>
-      <input type="text" placeholder="Enter tags separated by commas" name="recipeSubtitle" className="form-control mb-4" />
+      <label htmlFor="tags">Tags (Ex. easy, seafood, spicy)</label>
+      <input type="text" placeholder="Enter tags separated by commas" name="tags" className="form-control mb-4" value={recipeData.tags} onChange={handleInputChange}/>
       
       <label htmlFor="cuisine">Cuisine</label>
       <select id="cuisine" name="cuisine" className="form-select mb-4" value={recipeData.cuisine}
