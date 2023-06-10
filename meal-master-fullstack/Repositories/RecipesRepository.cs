@@ -26,9 +26,9 @@ namespace meal_master_fullstack.Repositories
     {
       string sql = @"
       INSERT INTO recipes
-      (title, subtitle, category, cuisine, imgUrl, creatorId)
+      (title, subtitle, tags, cuisine, imgUrl, creatorId)
       VALUES
-      (@title, @subtitle, @category, @cuisine, @imgUrl, @creatorId);
+      (@title, @subtitle, @tags, @cuisine, @imgUrl, @creatorId);
       SELECT LAST_INSERT_ID()
       ;";
       int id = _db.ExecuteScalar<int>(sql, newRecipe);
