@@ -21,7 +21,6 @@ export default function MyForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Perform form submission logic with recipeData
-    console.log(recipeData)
     recipeData.tags = recipeData.tags.toLowerCase();
     recipesService.createRecipe(recipeData)
   };
