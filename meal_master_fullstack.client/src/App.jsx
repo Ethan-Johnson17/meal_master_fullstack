@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { Navbar } from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
 
 
 export function App() {
@@ -15,9 +16,7 @@ export function App() {
         <Outlet />
       </main>
 
-      <footer className="bg-dark text-light text-center p-3 ">
-        Made with 💖 by CodeWorks
-      </footer>
+      <Footer />
 
     </div>
   )
