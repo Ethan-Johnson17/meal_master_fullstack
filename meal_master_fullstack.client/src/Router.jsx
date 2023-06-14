@@ -7,6 +7,7 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import HomePage from './pages/HomePage.jsx';
 import { accountService } from './services/AccountService.js';
 import AuthGuard from './utils/AuthGuard.jsx';
+import FindRecipesPage from './pages/FindRecipesPage.jsx';
 
 
 export const router = createHashRouter([
@@ -22,6 +23,10 @@ export const router = createHashRouter([
       {
         path: "about",
         element: <AboutPage />,
+      },
+      {
+        path: "FindRecipes",
+        element: <FindRecipesPage />,
       },
       {
         path: "account",
