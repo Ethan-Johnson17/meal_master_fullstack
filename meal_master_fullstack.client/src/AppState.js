@@ -7,6 +7,8 @@ class ObservableAppState {
   user = null
   /** @type {import('./models/Account.js').Account} */
   account = null
+  recipes = []
+
 
   constructor() {
     makeAutoObservable(this)

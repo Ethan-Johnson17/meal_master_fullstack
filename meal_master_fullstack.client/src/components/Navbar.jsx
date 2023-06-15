@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from '../assets/img/cw-logo.png';
+// @ts-ignore
+import logo from '../assets/img/hamburger.svg';
 import Login from "./Login.jsx";
 
 export function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-      <Link className="navbar-brand d-flex" to={''}>
-        <div className="d-flex flex-column align-items-center">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow px-3">
+      <Link className="navbar-brand d-flex" to={'/'}>
+        <div className="d-flex">
           <img alt="logo" src={logo} height="45" />
+          <h1 className="text-danger ms-2 me-3 mb-0">MealMaster</h1>
         </div>
       </Link>
       <button
@@ -22,10 +24,25 @@ export function Navbar() {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse" id="navbarText">
-        <ul className="navbar-nav me-auto">
+      <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarText">
+        <ul className="navbar-nav me-5">
           <li>
-            <Link to={'About'} className="btn text-success lighten-30 selectable text-uppercase">
+            <Link to={'About'} className="btn text-danger selectable text-uppercase">
+              My Meal Plan
+            </Link>
+          </li>
+          <li>
+            <Link to={'/About'} className="btn text-danger selectable text-uppercase">
+              My Shopping List
+            </Link>
+          </li>
+          <li>
+            <Link to={'/FindRecipes'} className="btn text-danger selectable text-uppercase">
+              Find Recipes
+            </Link>
+          </li>
+          <li>
+            <Link to={'About'} className="btn text-danger selectable text-uppercase">
               About
             </Link>
           </li>
