@@ -9,7 +9,7 @@ class RecipesService {
   }
 
   async createRecipe(recipe) {
-    const res = await api.post('api/recipes', recipe)
+    const res = await api.post('api/Recipes', recipe)
     AppState.recipes.push(res.data)
   }
 
