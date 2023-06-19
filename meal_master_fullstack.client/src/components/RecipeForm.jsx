@@ -1,42 +1,59 @@
 import React, { useState } from 'react';
 import { recipesService } from '../services/RecipesService';
+import PropTypes from 'prop-types';
+import Pop from '../utils/Pop';
 
-export default function MyForm() {
-  const [recipeData, setRecipeData] = useState({
-    recipeTitle: '',
-    recipeSubtitle: '',
-    recipeImg: '',
+export default function MyForm({onCloseOffcanvas}) {
+  let [recipeData, setRecipeData] = useState({
+    title: '',
+    subtitle: '',
+    imgUrl: '',
     cuisine: '',
     tags: ''
   });
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
     setRecipeData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     // Perform form submission logic with recipeData
     recipeData.tags = recipeData.tags.toLowerCase();
-    recipesService.createRecipe(recipeData)
+    try {
+      await recipesService.createRecipe(recipeData)
+      Pop.success('Successfully added recipe')
+      setRecipeData(() => ({
+        title: '',
+        subtitle: '',
+        imgUrl: '',
+        cuisine: '',
+        tags: ''
+      }));
+      onCloseOffcanvas();
+    }
+    catch (error){
+      Pop.error(error);
+    }
+    
   };
 
   return (
     <form id="recipeForm" onSubmit={handleSubmit}>
       <label htmlFor="recipeTitle">Recipe Title</label>
-      <input type="text" name="recipeTitle" className="form-control mb-4" value={recipeData.recipeTitle}
+      <input type="text" name="recipeTitle" className="form-control mb-4" value={recipeData.title}
           onChange={handleInputChange} />
 
       <label htmlFor="recipeSubtitle">Subtitle or Brief Description</label>
-      <input type="text" name="recipeSubtitle" className="form-control mb-4" value={recipeData.recipeSubtitle}
+      <input type="text" name="recipeSubtitle" className="form-control mb-4" value={recipeData.subtitle}
           onChange={handleInputChange} />
       
       <label htmlFor="imgUrl">Image URL</label>
-      <input type="text" name="recipeImg" className="form-control mb-4" value={recipeData.recipeImg}
+      <input type="text" name="recipeImg" className="form-control mb-4" value={recipeData.imgUrl}
           onChange={handleInputChange} />
       
       <label htmlFor="tags">Tags (Ex. easy, seafood, spicy)</label>
@@ -73,4 +90,8 @@ export default function MyForm() {
 
     </form>
   );
+}
+
+MyForm.propTypes = {
+  onCloseOffcanvas: PropTypes.func
 }
