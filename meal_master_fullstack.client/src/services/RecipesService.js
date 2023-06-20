@@ -23,6 +23,12 @@ class RecipesService {
     const res = await api.put('api/recipes/' + recipeId, recipe)
     logger.log('service res', res.data)
   }
+
+
+  async searchRecipes(query) {
+
+    // const res = await api.get()
+  }
 }
 
 export const recipesService = new RecipesService()
