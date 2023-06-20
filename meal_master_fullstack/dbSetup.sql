@@ -33,3 +33,16 @@ CREATE TABLE
     ) default charset utf8 COMMENT '';
 
 DROP TABLE ingredients;
+
+CREATE TABLE
+    shoppingList(
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(50) NOT NULL,
+        quantity VARCHAR (100) NOT NULL,
+        notes VARCHAR(500) NOT NULL,
+        creatorId varchar(255),
+        FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
+        ingredientId INT NOT NULL,
+        FOREIGN KEY (ingredientId) REFERENCES ingredients(id) ON DELETE CASCADE recipeId INT NOT NULL,
+        FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
+    ) default charset utf8 COMMENT '';
