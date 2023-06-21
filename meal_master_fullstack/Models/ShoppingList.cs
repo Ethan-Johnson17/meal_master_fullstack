@@ -4,8 +4,9 @@ public class ShoppingList
     public string Name { get; set; }
     public string Quantity { get; set; }
     public string Notes { get; set; }
+    public bool IsChecked { get; set; }
+    public string Category { get; set; }
     public string CreatorId { get; set; }
-    public int IngredientId { get; set; }
-    public int RecipeId { get; set; }
+
 
 }
