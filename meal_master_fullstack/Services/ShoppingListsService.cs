@@ -8,5 +8,11 @@ namespace meal_master_fullstack.Services
         {
             _repo = repo;
         }
+
+        internal ShoppingList CreateShoppingList(ShoppingList SLData)
+        {
+            ShoppingList newSL = _repo.CreateShoppingList(SLData);
+            return newSL;
+        }
     }
 }

@@ -13,5 +13,23 @@ namespace meal_master_fullstack.Controllers
             _auth = auth;
         }
 
+        [HttpPost]
+        [Authorize]
+        async public Task<ActionResult<ShoppingList>> CreateShoppingList([FromBody] ShoppingList SLData)
+        {
+            try
+            {
+                Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
+                SLData.CreatorId = userInfo.Id;
+                ShoppingList newShoppingList = _shoppingListsService.CreateShoppingList(SLData);
+                newShoppingList.Creator = userInfo;
+                return Ok(newShoppingList);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }

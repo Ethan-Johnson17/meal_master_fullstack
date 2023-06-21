@@ -7,6 +7,7 @@ public class ShoppingList
     public bool IsChecked { get; set; }
     public string Category { get; set; }
     public string CreatorId { get; set; }
+    public Account Creator { get; set; }
 
 
 }
