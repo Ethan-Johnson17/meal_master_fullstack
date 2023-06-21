@@ -31,5 +31,21 @@ namespace meal_master_fullstack.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        [Authorize]
+        async public Task<ActionResult<string>> Delete(int id)
+        {
+            try
+            {
+                Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
+                string message = _shoppingListsService.Delete(id, userInfo.Id);
+                return Ok(message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }

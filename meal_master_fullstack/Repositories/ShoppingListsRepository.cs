@@ -23,6 +23,7 @@ namespace meal_master_fullstack.Repositories
             return SLData;
         }
 
+
         internal List<ShoppingList> GetMyShoppingList(string id)
         {
             string sql = @"
@@ -37,6 +38,23 @@ namespace meal_master_fullstack.Repositories
                 return sl;
             }, new { id }).ToList();
             return shoppingList;
+        }
+
+        internal ShoppingList GetOne(int id)
+        {
+            string sql = @"
+            SELECT * FROM shoppingLists
+            WHERE id = @id
+            "; ShoppingList sl = _db.Query<ShoppingList>(sql, new { id }).FirstOrDefault();
+            return sl;
+        }
+        internal void Delete(int id)
+        {
+            string sql = @"
+            DELETE FROM
+            shoppingLists
+            WHERE id = @id
+            "; _db.Execute(sql, new { id });
         }
     }
 }
