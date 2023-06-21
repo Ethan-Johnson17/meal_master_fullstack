@@ -14,5 +14,11 @@ namespace meal_master_fullstack.Services
             ShoppingList newSL = _repo.CreateShoppingList(SLData);
             return newSL;
         }
+
+        internal List<ShoppingList> GetMyShoppingList(string id)
+        {
+            List<ShoppingList> shoppingList = _repo.GetMyShoppingList(id);
+            return shoppingList;
+        }
     }
 }

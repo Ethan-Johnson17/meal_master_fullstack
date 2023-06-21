@@ -22,5 +22,21 @@ namespace meal_master_fullstack.Repositories
             SLData.Id = id;
             return SLData;
         }
+
+        internal List<ShoppingList> GetMyShoppingList(string id)
+        {
+            string sql = @"
+            SELECT 
+            sl.*, a.*
+            FROM shoppingLists sl
+            JOIN accounts a ON sl.creatorId = a.id
+            WHERE creatorId = @id;
+            "; List<ShoppingList> shoppingList = _db.Query<ShoppingList, Account, ShoppingList>(sql, (sl, a) =>
+            {
+                sl.Creator = a;
+                return sl;
+            }, new { id }).ToList();
+            return shoppingList;
+        }
     }
 }
