@@ -6,7 +6,7 @@ export default function FindRecipes() {
         <div className="row">
           <h2 className="col-10 p-3">Find Recipes</h2>
           <div className="col-2 p-3">
-            {/* <RecipeOffcanvas /> */}
+            <RecipeOffcanvas />
           </div>
         </div>
         <div className="row d-flex justify-content-center">
