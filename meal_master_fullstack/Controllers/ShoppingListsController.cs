@@ -30,6 +30,22 @@ namespace meal_master_fullstack.Controllers
                 return BadRequest(e.Message);
             }
         }
+        [HttpPut("{id}")]
+        [Authorize]
+        async public Task<ActionResult<ShoppingList>> Edit(int id, [FromBody] ShoppingList SLData)
+        {
+            try
+            {
+                Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
+                ShoppingList shoppingList = _shoppingListsService.Edit(id, SLData, userInfo.Id);
+                return Ok(shoppingList);
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
 
         [HttpDelete("{id}")]
         [Authorize]

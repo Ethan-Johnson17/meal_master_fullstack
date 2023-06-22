@@ -56,5 +56,16 @@ namespace meal_master_fullstack.Repositories
             WHERE id = @id
             "; _db.Execute(sql, new { id });
         }
+
+        internal int Edit(ShoppingList original)
+        {
+            string sql = @"
+            UPDATE shoppingLists
+            SET
+            ischecked = @ischecked
+            WHERE id = @id
+            "; int rows = _db.Execute(sql, original);
+            return rows;
+        }
     }
 }
