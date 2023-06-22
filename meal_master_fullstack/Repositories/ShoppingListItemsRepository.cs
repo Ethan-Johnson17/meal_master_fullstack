@@ -1,66 +1,66 @@
 namespace meal_master_fullstack.Repositories
 {
-    public class ShoppingListsRepository
+    public class ShoppingListItemsRepository
     {
         private readonly IDbConnection _db;
 
-        public ShoppingListsRepository(IDbConnection db)
+        public ShoppingListItemsRepository(IDbConnection db)
         {
             _db = db;
         }
 
-        internal ShoppingList CreateShoppingList(ShoppingList SLData)
+        internal ShoppingListItem Create(ShoppingListItem itemData)
         {
             string sql = @"
             INSERT INTO
-            shoppingLists
+            shoppingListItems
             (name, quantity, notes, category, creatorId)
             VALUES
             (@name, @quantity, @notes, @category, @creatorId);
             SELECT LAST_INSERT_ID();
-            "; int id = _db.ExecuteScalar<int>(sql, SLData);
-            SLData.Id = id;
-            return SLData;
+            "; int id = _db.ExecuteScalar<int>(sql, itemData);
+            itemData.Id = id;
+            return itemData;
         }
 
 
-        internal List<ShoppingList> GetMyShoppingList(string id)
+        internal List<ShoppingListItem> GetMyShoppingList(string id)
         {
             string sql = @"
             SELECT 
             sl.*, a.*
-            FROM shoppingLists sl
+            FROM shoppingListItem sl
             JOIN accounts a ON sl.creatorId = a.id
             WHERE creatorId = @id;
-            "; List<ShoppingList> shoppingList = _db.Query<ShoppingList, Account, ShoppingList>(sql, (sl, a) =>
+            "; List<ShoppingListItem> shoppingListItem = _db.Query<ShoppingListItem, Account, ShoppingListItem>(sql, (sl, a) =>
             {
                 sl.Creator = a;
                 return sl;
             }, new { id }).ToList();
-            return shoppingList;
+            return shoppingListItem;
         }
 
-        internal ShoppingList GetOne(int id)
+        internal ShoppingListItem GetOne(int id)
         {
             string sql = @"
-            SELECT * FROM shoppingLists
+            SELECT * FROM shoppingListItems
             WHERE id = @id
-            "; ShoppingList sl = _db.Query<ShoppingList>(sql, new { id }).FirstOrDefault();
+            "; ShoppingListItem sl = _db.Query<ShoppingListItem>(sql, new { id }).FirstOrDefault();
             return sl;
         }
         internal void Delete(int id)
         {
             string sql = @"
             DELETE FROM
-            shoppingLists
+            shoppingListItms
             WHERE id = @id
             "; _db.Execute(sql, new { id });
         }
 
-        internal int Edit(ShoppingList original)
+        internal int Edit(ShoppingListItem original)
         {
             string sql = @"
-            UPDATE shoppingLists
+            UPDATE shoppingListItems
             SET
             ischecked = @ischecked
             WHERE id = @id

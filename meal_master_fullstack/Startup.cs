@@ -37,8 +37,8 @@ public class Startup
         services.AddScoped<AccountService>();
         services.AddScoped<RecipesRepository>();
         services.AddScoped<RecipesService>();
-        services.AddScoped<ShoppingListsRepository>();
-        services.AddScoped<ShoppingListsService>();
+        services.AddScoped<ShoppingListItemsRepository>();
+        services.AddScoped<ShoppingListItemsService>();
         services.AddScoped<StepsRepository>();
         services.AddScoped<StepsService>();
     }
