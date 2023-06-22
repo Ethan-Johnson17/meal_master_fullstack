@@ -77,7 +77,7 @@ export default function MyForm({onCloseOffcanvas}) {
           <option value="indian">Indian</option>
           <option value="korean">Korean</option>
         </optgroup>
-        <optgroup label="North, South, and Latin American">
+        <optgroup label="North, South, and Central American">
         <option value="american">American</option>
         <option value="mexican">Mexican</option>
         <option value="peruvian">Peruvian</option>
