@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RecipeOffcanvas from "../components/RecipeOffcanvas";
 import { recipesService } from '../services/RecipesService';
+import { logger } from "../utils/Logger";
+import Pop from "../utils/Pop";
 
 export default function FindRecipes() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
+  // const [results, setResults] = useState([]);
+  // ?WILL DELETE LATER USED FOR TESTING
+  async function getAllRecipes() {
+    try {
+      await recipesService.getAllRecipes()
+    } catch (error) {
+      Pop.error(error)
+    }
+  }
+
 
   // Function to handle the search
   const handleSearch = async () => {
-    // Call the searchRecipes function from RecipeService.js
-    const recipesService = await searchRecipes(query);
-
-    // Update the results state with the search results
-    setResults(recipesService);
+    try {
+      logger.log('handle search run')
+      // Call the searchRecipes function from RecipeService.js
+      await recipesService.searchRecipes(query);
+    } catch (error) {
+      Pop.error(error)
+    }
   };
+  useEffect(() => {
+    getAllRecipes()
+  }, [])
+
   return (
     <>
       <div className="row">

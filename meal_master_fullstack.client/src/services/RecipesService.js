@@ -24,9 +24,14 @@ class RecipesService {
     logger.log('service res', res.data)
   }
 
+  async getAllRecipes() {
+    const res = await api.get('api/recipes')
+    AppState.recipes = res.data
+    logger.log('appstate', AppState.recipes, '{resdata}', res.data)
+  }
 
   async searchRecipes(query) {
-
+    logger.log('query', query)
     // const res = await api.get()
   }
 }
