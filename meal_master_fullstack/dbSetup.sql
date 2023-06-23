@@ -47,7 +47,7 @@ CREATE TABLE
         FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) DEFAULT CHARSET utf8 COMMENT '';
 
-DROP TABLE shoppingLists;
+======= DROP TABLE ingredients;
 
 CREATE TABLE
     ingredients(

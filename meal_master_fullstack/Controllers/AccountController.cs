@@ -32,12 +32,12 @@ public class AccountController : ControllerBase
 
     [HttpGet("shoppinglistitems")]
     [Authorize]
-    public async Task<ActionResult<List<ShoppingListItem>>> GetMyShoppingListItem()
+    public async Task<ActionResult<List<ShoppingList>>> GetMyShoppingList()
     {
         try
         {
             Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-            List<ShoppingListItem> shoppingList = _shoppingListItemsService.GetMyShoppingListItem(userInfo.Id);
+            List<ShoppingList> shoppingList = _shoppingListsService.GetMyShoppingList(userInfo.Id);
             return Ok(shoppingList);
         }
         catch (Exception e)

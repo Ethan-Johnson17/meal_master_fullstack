@@ -9,7 +9,7 @@ namespace meal_master_fullstack.Repositories
             _db = db;
         }
 
-        internal ShoppingListItem CreateShoppingListItem(ShoppingListItem SLData)
+        internal ShoppingList CreateShoppingList(ShoppingList SLData)
         {
             string sql = @"
             INSERT INTO
@@ -18,26 +18,26 @@ namespace meal_master_fullstack.Repositories
             VALUES
             (@name, @quantity, @notes, @category, @creatorId);
             SELECT LAST_INSERT_ID();
-            "; int id = _db.ExecuteScalar<int>(sql, SLData);
-            SLData.Id = id;
-            return SLData;
+            "; int id = _db.ExecuteScalar<int>(sql, itemData);
+            itemData.Id = id;
+            return itemData;
         }
 
 
-        internal List<ShoppingListItem> GetMyShoppingListItem(string id)
+        internal List<ShoppingList> GetMyShoppingList(string id)
         {
             string sql = @"
             SELECT 
             sl.*, a.*
-            FROM shoppingListItems sl
+            FROM shoppingLists sl
             JOIN accounts a ON sl.creatorId = a.id
             WHERE creatorId = @id;
-            "; List<ShoppingListItem> shoppingList = _db.Query<ShoppingListItem, Account, ShoppingListItem>(sql, (sl, a) =>
+            "; List<ShoppingList> shoppingList = _db.Query<ShoppingList, Account, ShoppingList>(sql, (sl, a) =>
             {
                 sl.Creator = a;
                 return sl;
             }, new { id }).ToList();
-            return shoppingList;
+            return shoppingListItem;
         }
 
         internal ShoppingListItem GetOne(int id)
@@ -52,7 +52,7 @@ namespace meal_master_fullstack.Repositories
         {
             string sql = @"
             DELETE FROM
-            shoppingListItems
+            shoppingLists
             WHERE id = @id
             "; _db.Execute(sql, new { id });
         }

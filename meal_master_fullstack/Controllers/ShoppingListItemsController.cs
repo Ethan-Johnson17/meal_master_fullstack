@@ -15,13 +15,13 @@ namespace meal_master_fullstack.Controllers
 
         [HttpPost]
         [Authorize]
-        async public Task<ActionResult<ShoppingListItem>> CreateShoppingListItem([FromBody] ShoppingListItem SLData)
+        async public Task<ActionResult<ShoppingList>> CreateShoppingList([FromBody] ShoppingList SLData)
         {
             try
             {
                 Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
                 SLData.CreatorId = userInfo.Id;
-                ShoppingListItem newShoppingList = _shoppingListItemsService.CreateShoppingListItem(SLData);
+                ShoppingList newShoppingList = _shoppingListsService.CreateShoppingList(SLData);
                 newShoppingList.Creator = userInfo;
                 return Ok(newShoppingList);
             }
@@ -32,12 +32,12 @@ namespace meal_master_fullstack.Controllers
         }
         [HttpPut("{id}")]
         [Authorize]
-        async public Task<ActionResult<ShoppingListItem>> Edit(int id, [FromBody] ShoppingListItem SLData)
+        async public Task<ActionResult<ShoppingList>> Edit(int id, [FromBody] ShoppingList SLData)
         {
             try
             {
                 Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
-                ShoppingListItem shoppingList = _shoppingListItemsService.Edit(id, SLData, userInfo.Id);
+                ShoppingList shoppingList = _shoppingListsService.Edit(id, SLData, userInfo.Id);
                 return Ok(shoppingList);
 
             }
