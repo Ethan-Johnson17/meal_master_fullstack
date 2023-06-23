@@ -1,29 +1,29 @@
 namespace meal_master_fullstack.Services
 {
-    public class ShoppingListsService
+    public class ShoppingListItemsService
     {
-        private readonly ShoppingListsRepository _repo;
+        private readonly ShoppingListItemsRepository _repo;
 
-        public ShoppingListsService(ShoppingListsRepository repo)
+        public ShoppingListItemsService(ShoppingListItemsRepository repo)
         {
             _repo = repo;
         }
 
-        internal ShoppingList CreateShoppingList(ShoppingList SLData)
+        internal ShoppingListItem CreateShoppingListItem(ShoppingListItem SLData)
         {
-            ShoppingList newSL = _repo.CreateShoppingList(SLData);
+            ShoppingListItem newSL = _repo.CreateShoppingListItem(SLData);
             return newSL;
         }
 
 
-        internal List<ShoppingList> GetMyShoppingList(string id)
+        internal List<ShoppingListItem> GetMyShoppingListItem(string id)
         {
-            List<ShoppingList> shoppingList = _repo.GetMyShoppingList(id);
+            List<ShoppingListItem> shoppingList = _repo.GetMyShoppingListItem(id);
             return shoppingList;
         }
-        internal ShoppingList Edit(int id, ShoppingList sLData, string userId)
+        internal ShoppingListItem Edit(int id, ShoppingListItem sLData, string userId)
         {
-            ShoppingList original = _repo.GetOne(id);
+            ShoppingListItem original = _repo.GetOne(id);
             if (original.CreatorId != userId) throw new Exception("This is not yours to edit");
             original.IsChecked = sLData.IsChecked ? sLData.IsChecked : original.IsChecked;
             int rowsAffected = _repo.Edit(original);
@@ -34,7 +34,7 @@ namespace meal_master_fullstack.Services
         }
         internal string Delete(int id, string userId)
         {
-            ShoppingList shoppingList = _repo.GetOne(id);
+            ShoppingListItem shoppingList = _repo.GetOne(id);
             if (shoppingList == null) throw new Exception($"No items with id: {id}");
             if (shoppingList.CreatorId != userId) throw new Exception("This is not your items to delete!");
             _repo.Delete(id);

@@ -35,9 +35,8 @@ CREATE TABLE
         FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
 
-
 CREATE TABLE
-    IF NOT EXISTS shoppingLists (
+    IF NOT EXISTS shoppingListItems (
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(50) NOT NULL,
         quantity VARCHAR(100) NOT NULL,
@@ -47,8 +46,8 @@ CREATE TABLE
         creatorId VARCHAR(255),
         FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) DEFAULT CHARSET utf8 COMMENT '';
-=======
-DROP TABLE ingredients;
+
+DROP TABLE shoppingLists;
 
 CREATE TABLE
     ingredients(
@@ -73,4 +72,3 @@ CREATE TABLE
         FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE,
         FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) DEFAULT CHARSET UTF8 COMMENT '';
-

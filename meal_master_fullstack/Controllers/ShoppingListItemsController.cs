@@ -2,26 +2,26 @@ namespace meal_master_fullstack.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ShoppingListsController : ControllerBase
+    public class ShoppingListItemsController : ControllerBase
     {
-        private readonly ShoppingListsService _shoppingListsService;
+        private readonly ShoppingListItemsService _shoppingListItemsService;
         private readonly Auth0Provider _auth;
 
-        public ShoppingListsController(ShoppingListsService shoppingListsService, Auth0Provider auth)
+        public ShoppingListItemsController(ShoppingListItemsService shoppingListItemsService, Auth0Provider auth)
         {
-            _shoppingListsService = shoppingListsService;
+            _shoppingListItemsService = shoppingListItemsService;
             _auth = auth;
         }
 
         [HttpPost]
         [Authorize]
-        async public Task<ActionResult<ShoppingList>> CreateShoppingList([FromBody] ShoppingList SLData)
+        async public Task<ActionResult<ShoppingListItem>> CreateShoppingListItem([FromBody] ShoppingListItem SLData)
         {
             try
             {
                 Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
                 SLData.CreatorId = userInfo.Id;
-                ShoppingList newShoppingList = _shoppingListsService.CreateShoppingList(SLData);
+                ShoppingListItem newShoppingList = _shoppingListItemsService.CreateShoppingListItem(SLData);
                 newShoppingList.Creator = userInfo;
                 return Ok(newShoppingList);
             }
@@ -32,12 +32,12 @@ namespace meal_master_fullstack.Controllers
         }
         [HttpPut("{id}")]
         [Authorize]
-        async public Task<ActionResult<ShoppingList>> Edit(int id, [FromBody] ShoppingList SLData)
+        async public Task<ActionResult<ShoppingListItem>> Edit(int id, [FromBody] ShoppingListItem SLData)
         {
             try
             {
                 Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
-                ShoppingList shoppingList = _shoppingListsService.Edit(id, SLData, userInfo.Id);
+                ShoppingListItem shoppingList = _shoppingListItemsService.Edit(id, SLData, userInfo.Id);
                 return Ok(shoppingList);
 
             }
@@ -54,7 +54,7 @@ namespace meal_master_fullstack.Controllers
             try
             {
                 Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
-                string message = _shoppingListsService.Delete(id, userInfo.Id);
+                string message = _shoppingListItemsService.Delete(id, userInfo.Id);
                 return Ok(message);
             }
             catch (Exception e)

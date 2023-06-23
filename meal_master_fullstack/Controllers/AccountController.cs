@@ -6,13 +6,13 @@ public class AccountController : ControllerBase
 {
     private readonly AccountService _accountService;
     private readonly Auth0Provider _auth0Provider;
-    private readonly ShoppingListsService _shoppingListsService;
+    private readonly ShoppingListItemsService _shoppingListItemsService;
 
-    public AccountController(AccountService accountService, Auth0Provider auth0Provider, ShoppingListsService shoppingListsService)
+    public AccountController(AccountService accountService, Auth0Provider auth0Provider, ShoppingListItemsService shoppingListItemsService)
     {
         _accountService = accountService;
         _auth0Provider = auth0Provider;
-        _shoppingListsService = shoppingListsService;
+        _shoppingListItemsService = shoppingListItemsService;
     }
 
     [HttpGet]
@@ -30,14 +30,14 @@ public class AccountController : ControllerBase
         }
     }
 
-    [HttpGet("shoppinglist")]
+    [HttpGet("shoppinglistitems")]
     [Authorize]
-    public async Task<ActionResult<List<ShoppingList>>> GetMyShoppingList()
+    public async Task<ActionResult<List<ShoppingListItem>>> GetMyShoppingListItem()
     {
         try
         {
             Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-            List<ShoppingList> shoppingList = _shoppingListsService.GetMyShoppingList(userInfo.Id);
+            List<ShoppingListItem> shoppingList = _shoppingListItemsService.GetMyShoppingListItem(userInfo.Id);
             return Ok(shoppingList);
         }
         catch (Exception e)
