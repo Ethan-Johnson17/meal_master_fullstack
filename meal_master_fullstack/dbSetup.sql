@@ -1,3 +1,5 @@
+USE MealMaster;
+
 CREATE TABLE
     IF NOT EXISTS accounts(
         id VARCHAR(255) NOT NULL primary key COMMENT 'primary key',
@@ -29,10 +31,23 @@ CREATE TABLE
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(50) NOT NULL,
         quantity VARCHAR(100) NOT NULL,
-        recipeId INT NOT NULL FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
+        recipeId INT NOT NULL,
+        FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
 
-DROP TABLE ingredients;
+CREATE TABLE
+    IF NOT EXISTS shoppingListItems (
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(50) NOT NULL,
+        quantity VARCHAR(100) NOT NULL,
+        notes VARCHAR(500) NOT NULL,
+        isChecked BOOLEAN NOT NULL DEFAULT false,
+        category VARCHAR(100) NOT NULL,
+        creatorId VARCHAR(255),
+        FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
+    ) DEFAULT CHARSET utf8 COMMENT '';
+
+======= DROP TABLE ingredients;
 
 CREATE TABLE
     ingredients(
