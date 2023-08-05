@@ -72,3 +72,16 @@ CREATE TABLE
         FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE,
         FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) DEFAULT CHARSET UTF8 COMMENT '';
+
+CREATE TABLE
+    mealPlan(
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'Primary Key',
+        create_time DATETIME COMMENT 'Create Time',
+        scheduledMeals  TEXT NOT NULL,
+        recipeId INT NOT NULL,
+        shoppingListItemsId INT NOT NULL,
+        creatorId VARCHAR(255) NOT NULL,
+        FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE,
+        FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
+        FOREIGN KEY (shoppingListItemsId) REFERENCES shoppingListItems(id) ON DELETE CASCADE
+    ) DEFAULT CHARSET UTF8 COMMENT ';'
